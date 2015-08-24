@@ -380,6 +380,21 @@ NAN_METHOD(BigInt::Umul_2exp)
   info.GetReturnValue().Set(result);
 }
 
+NAN_METHOD(BigInt::Udiv)
+{
+  BigInt *bigint = ObjectWrap::Unwrap<BigInt>(info.This());
+  Nan::HandleScope scope;
+
+  REQ_UINT64_ARG(0, x);
+  mpz_t *res = (mpz_t *) malloc(sizeof(mpz_t));
+  mpz_init(*res);
+  mpz_div_ui(*res, *bigint->bigint_, x);
+                
+  WRAP_RESULT(res, result);
+
+  info.GetReturnValue().Set(result);
+}
+
 NAN_METHOD(BigInt::Udiv_2exp)
 {
 	BigInt *bigint = ObjectWrap::Unwrap<BigInt>(info.This());
