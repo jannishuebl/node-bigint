@@ -23,7 +23,7 @@
         "url" : "http://substack.net"
     },
     "dependencies": {
-        "nan": ">=1.4.1"
+        "nan": ">=2.0.5"
     },
     "devDependencies" : {
         "tap" : "~0.2.5",
@@ -31,7 +31,7 @@
     },
     "license" : "MIT/X11",
     "engine" : {
-        "node" : ">=0.2.0"
+        "node" : ">=0.8.0"
     },
     "scripts" : {
         "install" : "node-gyp configure build",
