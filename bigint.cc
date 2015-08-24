@@ -213,6 +213,7 @@ NAN_METHOD(BigInt::New)
 		Local<Value> newInst = Nan::New<FunctionTemplate>(constructor)->GetFunction()->NewInstance(len, newArgs);
 		delete[] newArgs;
     info.GetReturnValue().Set(newInst);
+    return;
 	}
 	BigInt *bigint;
 	uint64_t base;
@@ -227,7 +228,6 @@ NAN_METHOD(BigInt::New)
 		for(int i = 0; i < len; i++) {
 			newArgs[i] = info[i];
 		}
-		//Local<Value> obj = NanMakeCallback(ctx, NanNew<Function>(js_conditioner), args.Length(), newArgs);
 		Local<Value> obj = Nan::New<Function>(js_conditioner)->Call(ctx, info.Length(), newArgs);
 
 		if(!*obj) {
